@@ -9,4 +9,4 @@ phases:
       - echo "******** Building Jekyll site ********"
       - jekyll build
       - echo "******** Uploading to S3 ********"
-      - aws s3 sync roarcoder-frontend-microservice/ s3://roarcoder.dev
+      - aws s3 sync .. s3://roarcoder.devt

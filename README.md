@@ -1,94 +1,30 @@
-# Jekyll Resume Theme
+# RoarCoder FrontEnd Microservice
 
-Live demo at https://jekyll-theme-minimal-resume.netlify.com/
+This project is frontend (only) of my website, [RoarCoder](https://roarcoder.dev).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/24d80ae8-c3d9-4645-a6d8-9e97fc8dec3c/deploy-status)](https://app.netlify.com/sites/jekyll-theme-minimal-resume/deploys)
+# Motivation
 
-# Stack
+The goal is to convert the hardcoded information to come dynamically from the API.
 
-![](https://img.shields.io/badge/jekyll-✓-blue.svg)
-![](https://img.shields.io/badge/html5-✓-blue.svg)
-![](https://img.shields.io/badge/sass-✓-blue.svg)
-![](https://img.shields.io/badge/sweet--scroll-✓-blue.svg)
-![](https://img.shields.io/badge/particle--js-✓-blue.svg)
-![](https://img.shields.io/badge/font--awesome-✓-blue.svg)
-![](https://img.shields.io/badge/devicon-✓-blue.svg)
-![](https://img.shields.io/badge/gulp-✓-blue.svg)
+# Prerequisites
 
-***
+Familiarity with AJAX, jQuery, HTML and CSS.
 
-<h3 align="center">Please help this repo with a :star: if you find it useful! :blush:</h3>
+# Getting Started
 
-***
+1. Install [Ruby](https://www.ruby-lang.org/en/downloads/) version 2.4.0 or above (check by `ruby -v`)
+2. Install [RubyGems](https://rubygems.org/pages/download) installed (check by runnung `gem -v`) 
+3. Install [Jekyll](https://jekyllrb.com/docs/installation/macos/) for macOS
 
-# Screenshot
+# Running The Project
 
-<p align="center">
-  <img src="https://github.com/murraco/jekyll-theme-minimal-resume/blob/master/screenshot.png" width="90%" />
-</p>
+## Locally
 
-# Quick Setup
-
-1. Install Jekyll: `gem install jekyll bundler`
-2. For this repository and clone your fork
-3. Edit `_config.yml` to personalize your site
-
-# Settings
-
-You have to fill some informations on `_config.yml` to customize your site:
-
-## Site settings
-```yml
-description: A blog about lorem ipsum dolor sit amet
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://localhost:3000" # the base hostname & protocol for your site
-```
-
-## User settings
-```yml
-username: Lorem Ipsum
-user_description: Software Engineer at Lorem Ipsum Dolor
-user_title: Mauricio Urraco
-email: mauriurraco@gmail.com
-```
-
-> Don't forget to change your URL before you deploy your site!
-
-# Color and Particle Customization
-
-- Color Customization
-  - Edit the `.sass` variables
-- Particle Customization
-  - Edit the json data in particle function in `app.js`
-  - Refer to `Particle.js` for help
-  
-# Content
-
-You can (and should) edit the `.html` files for adding your own information, icons, working experience, social links or whatever you want to add. I.e.:
-
-```html
-<a aria-label="My Github" target="_blank" href="https://github.com/murraco">
-  <i class="icon fa fa-github-alt" aria-hidden="true"></i>
-</a>
-```
-
-# Running locally
-
-In order to compile the assets and run `Jekyll` locally you need to follow those steps:
-
-1. Install Jekyll
-2. Run `jekyll build`
-3. Start and http-server in the folder `_site`
-
-# Contribution
-
-- Report issues
-- Open pull request with improvements
-- Spread the word
-- Reach out to me directly at <mauriurraco@gmail.com>
-
-# Donate
-
-`btc: 36V7HqqENSKn6iFCBuE4iCdtB29uGoCKzN`
-
-`eth: 0xB419E3E9fa2233383E0877d442e55C34B9C944dD`
+1. Clone or download the repository.
+2. Open in Visual Studio Code or any of your favourite text editor.
+3. Check if it builds successful by running `jekyll serve` in the terminal. If you get an error, it's most likely that you don't have the gem `jekyll-watch` as your dependancy.
+4. How to install jekyll watch? See next two steps
+5. Include `gem 'jekyll-watch'` in your GemFile.
+6. Repeat step 3.
+7. If everything goes well, TADAAAAA!! Your coolest Jekyll website is running locally.
+8. OPTIONAL - Get production version of your website by running `jekyll build` and run then `jekyll serve` in the `_site`'s folder

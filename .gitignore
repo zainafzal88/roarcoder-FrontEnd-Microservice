@@ -105,3 +105,8 @@ dist
 
 # DS_Store file
 .DS_Store
+
+# jekyll files
+.jekyll-cache/
+_site/
+

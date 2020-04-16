@@ -19,7 +19,7 @@ $(function () {
             $('#title2Image1').attr('src', item[0].image1)
             $('#title2Image2').attr('src', item[0].image2)
             $('#title2Image3').attr('src', item[0].image3)
-            $('#summary2').text(item[1].summary)
+            $('#summary2').text(item[0].summary)
 
             //Tools section
             $('#title3').text(item[2].title)

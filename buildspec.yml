@@ -1,4 +1,8 @@
 version: 0.1
+
+env:
+    parameter-store:
+        SSH_KEY_PARAM: /codebuild/b64key
    
 phases:
   install:
@@ -10,6 +14,12 @@ phases:
       - jekyll build
       - echo "******** Uploading to S3 ********"
       - aws s3 sync . s3://roarcoder.dev
+      - echo "******** Get ssh key from S3 ********"
+      - aws s3 cp s3://ssh-keys-zain/id_rsa $HOME/id_rsa
+      - chmod 400 $HOME/id_rsa
+      - echo "******** Upload to Raspberry Pi ********"
+      - scp -r -oStrictHostKeyChecking=no -i $HOME/id_rsa -v ./* pi@roarcoder.dyndns.org:/var/www/html/
+      - rm $HOME/id_rsa
   post_build:
    commands:
       - aws cloudfront create-invalidation --distribution-id E7P8BMIOWTPBG --paths '/*'

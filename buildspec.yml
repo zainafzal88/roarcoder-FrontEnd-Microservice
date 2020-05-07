@@ -1,9 +1,5 @@
 version: 0.1
 
-env:
-    parameter-store:
-        SSH_KEY_PARAM: /codebuild/b64key
-   
 phases:
   install:
     commands:
@@ -15,11 +11,13 @@ phases:
       - echo "******** Uploading to S3 ********"
       - aws s3 sync . s3://roarcoder.dev
       - echo "******** Get ssh key from S3 ********"
-      - aws s3 cp s3://ssh-keys-zain/id_rsa $HOME/id_rsa
-      - chmod 400 $HOME/id_rsa
+      - aws s3 cp s3://ssh-keys-zain/encrypted_id_rsa $HOME/encrypted_id_rsa
+      - aws kms decrypt --ciphertext-blob fileb://$HOME/encrypted_id_rsa --output text --query Plaintext | base64 --decode > $HOME/decrypted_id_rsa
+      - chmod 400 $HOME/decrypted_id_rsa
       - echo "******** Upload to Raspberry Pi ********"
-      - scp -r -oStrictHostKeyChecking=no -i $HOME/id_rsa -v ./* pi@roarcoder.dyndns.org:/var/www/html/
-      - rm $HOME/id_rsa
+      - scp -r -oStrictHostKeyChecking=no -i $HOME/decrypted_id_rsa ./* pi@roarcoder.dyndns.org:/var/www/html/
+      - rm $HOME/decrypted_id_rsa
+      - rm $HOME/encrypted_id_rsa
   post_build:
    commands:
       - aws cloudfront create-invalidation --distribution-id E7P8BMIOWTPBG --paths '/*'

@@ -9,6 +9,7 @@ $(function () {
             $('#email').attr('href', 'mailto:' + user.email)
             $('#linkedIn').attr('href', user.url_LinkedIn)
             $('#github').attr('href', user.url_Github)
+            $('#blogs').attr('href', user.url_Blogs)
         }
     })
 })

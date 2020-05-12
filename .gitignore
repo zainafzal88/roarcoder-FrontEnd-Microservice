@@ -110,3 +110,6 @@ dist
 .jekyll-cache/
 _site/
 
+# appspec
+appspec.yml
+

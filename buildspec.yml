@@ -19,7 +19,7 @@ phases:
       - aws kms decrypt --ciphertext-blob fileb://$HOME/encrypted_id_rsa --output text --query Plaintext | base64 --decode > $HOME/decrypted_id_rsa
       - chmod 400 $HOME/decrypted_id_rsa
       - echo "******** Upload to Raspberry Pi ********"
-      - scp -r -oStrictHostKeyChecking=no -i $HOME/decrypted_id_rsa ./* pi@$PI_DNS:/var/www/html/
+      - scp -r -oStrictHostKeyChecking=no -i $HOME/decrypted_id_rsa ./* pi@$PI_DNS:/var/www/roarcoder.dev/html/
       - rm $HOME/decrypted_id_rsa
       - rm $HOME/encrypted_id_rsa
   post_build:

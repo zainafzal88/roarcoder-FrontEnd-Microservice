@@ -5,9 +5,6 @@ env:
     PI_DNS: /codebuild/piRoarcoder
 
 phases:
-  install:
-    commands:
-      - gem install jekyll bundler jekyll-paginate jekyll-sitemap jekyll-gist
   build:
     commands:
       - echo "******** Building Jekyll site ********"

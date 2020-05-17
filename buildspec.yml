@@ -2,7 +2,7 @@ version: 0.1
 
 env:
   parameter-store:
-    PI_DNS: /codebuild/piDns
+    PI_DNS: /codebuild/piRoarcoder
 
 phases:
   install:
@@ -12,8 +12,6 @@ phases:
     commands:
       - echo "******** Building Jekyll site ********"
       - jekyll build
-      - echo "******** Uploading to S3 ********"
-      - aws s3 sync . s3://roarcoder.dev
       - echo "******** Get ssh key from S3 ********"
       - aws s3 cp s3://ssh-keys-zain/encrypted_id_rsa $HOME/encrypted_id_rsa
       - aws kms decrypt --ciphertext-blob fileb://$HOME/encrypted_id_rsa --output text --query Plaintext | base64 --decode > $HOME/decrypted_id_rsa
@@ -22,6 +20,3 @@ phases:
       - scp -r -oStrictHostKeyChecking=no -i $HOME/decrypted_id_rsa ./* pi@$PI_DNS:/var/www/roarcoder.dev/html/
       - rm $HOME/decrypted_id_rsa
       - rm $HOME/encrypted_id_rsa
-  post_build:
-   commands:
-      - aws cloudfront create-invalidation --distribution-id E7P8BMIOWTPBG --paths '/*'

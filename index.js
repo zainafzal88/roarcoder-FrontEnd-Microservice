@@ -2,7 +2,7 @@ $(function () {
 
     $.ajax({
         type: 'GET',
-        url: 'https://w17sapv34a.execute-api.ap-southeast-2.amazonaws.com/Prod/getuser/1',
+        url: 'https://dotnet.roarcoder.dev/api/userinfo/2',
         success: function(user){
             $('#fullName').text(user.firstName + " " + user.lastName)
             $('#occupation').text(user.occupation)

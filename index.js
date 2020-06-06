@@ -2,7 +2,7 @@ $(function () {
 
     $.ajax({
         type: 'GET',
-        url: 'https://dotnet.roarcoder.dev/api/userinfo/2',
+        url: 'https://dotnet.roarcoder.dev/api/userinfo/1',
         success: function(user){
             $('#fullName').text(user.firstName + " " + user.lastName)
             $('#occupation').text(user.occupation)
